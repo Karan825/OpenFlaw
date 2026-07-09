@@ -1,4 +1,4 @@
-# Autonomous GitHub Issue-to-PR Resolution Agent
+# Autonomous GitHub Issue-to-PR Agent
 
 This repository contains the source code for an autonomous, self-hosted software engineering agent designed to automatically resolve GitHub issues. The system securely ingests GitHub webhook events, provisions isolated microVM sandboxes, executes a Reasoning-Action (ReAct) loop using LLMs, verifies edits through automated test suites, and submits validated Pull Requests back to your codebases.
 
