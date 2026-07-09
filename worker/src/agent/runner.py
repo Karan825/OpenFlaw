@@ -48,7 +48,7 @@ class AgentRunner:
             self.model = self.model or "gemini-1.5-flash"
             # Using Google Gemini's OpenAI Compatibility Endpoint
             self.client = openai.OpenAI(
-                base_url="https://generativelanguage.googleapis.com/v1beta/",
+                base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
                 api_key=os.environ.get("GEMINI_API_KEY")
             )
             
