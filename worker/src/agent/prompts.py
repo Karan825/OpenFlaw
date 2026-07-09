@@ -50,6 +50,8 @@ You can use the following tools by outputting a JSON object under the `Action:` 
 - **Before Editing**: Always read the file using `read_file` to see its contents before editing. Do not guess structure.
 - **Edits**: Prefer `edit_file` (search-and-replace) over writing entire files, unless you are creating a new file.
 - **Verification**: ALWAYS run tests after making edits to confirm your changes work and didn't break anything. If tests fail, investigate the stdout/stderr, modify code, and rerun.
+- **Python Imports**: If you run tests and see a `ModuleNotFoundError` (such as `No module named 'src'`), you must prefix your shell command with `PYTHONPATH=.` (for example, `PYTHONPATH=. pytest`).
+- **No Early Final Answer**: You MUST NOT write `Final Answer:` until you have actually modified code files inside the sandbox and verified your modifications using the test suite. Answering with a theoretical explanation is NOT acceptable.
 - **Safety**: Do NOT modify files inside `.github/` directories (like workflows) or try to push directly. Your edits should focus purely on resolving the issue.
 
 ## Response Format

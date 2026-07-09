@@ -95,7 +95,7 @@ def get_default_commands(language: str, package_manager: str, sub_dir: str = "")
         elif package_manager == "pipenv":
             return {"install": f"{prefix}pipenv install --dev", "test": f"{prefix}pipenv run pytest"}
         else:
-            return {"install": f"{prefix}pip install -r requirements.txt", "test": f"{prefix}pytest"}
+            return {"install": f"{prefix}pip install -r requirements.txt", "test": f"{prefix}PYTHONPATH=. pytest"}
             
     elif language == "javascript":
         if package_manager == "pnpm":

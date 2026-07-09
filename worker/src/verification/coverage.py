@@ -26,12 +26,12 @@ class CoverageTracker:
             
         try:
             # We run pytest under coverage and export results to JSON
-            run_cmd = "coverage run -m pytest && coverage json -o coverage_report.json"
+            run_cmd = "PYTHONPATH=. coverage run -m pytest && coverage json -o coverage_report.json"
             res = self.sandbox_manager.execute_command(run_cmd)
             
             if res["exit_code"] != 0:
                 logger.info("coverage command failed, trying fallback: pytest --cov")
-                fallback_cmd = "pytest --cov=. --cov-report=json:coverage_report.json"
+                fallback_cmd = "PYTHONPATH=. pytest --cov=. --cov-report=json:coverage_report.json"
                 res = self.sandbox_manager.execute_command(fallback_cmd)
                 if res["exit_code"] != 0:
                     logger.warning("Could not execute test coverage suite.")
