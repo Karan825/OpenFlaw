@@ -161,8 +161,9 @@ async def webhook_receiver(
             # Generate the short-lived installation access token
             token = get_installation_token(str(installation_id))
             
-            # Dispatch trigger-agent event to target repository
-            dispatch_github_action(repo_full_name, token, task_payload)
+            # Dispatch trigger-agent event to control repository (where agent code and workflow live)
+            control_repo = os.environ.get("CONTROL_REPOSITORY", "Karan825/fixfoo")
+            dispatch_github_action(control_repo, token, task_payload)
             
             return {"status": "dispatched", "task": task_payload}
         except Exception as e:
