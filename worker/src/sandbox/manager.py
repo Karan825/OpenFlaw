@@ -78,12 +78,33 @@ class SandboxManager:
             
         target_dir = workdir or self.repo_dir
         logger.info(f"Executing command in {target_dir}: {cmd}")
-        res = self.sandbox.commands.run(cmd, cwd=target_dir)
-        return {
-            "stdout": res.stdout,
-            "stderr": res.stderr,
-            "exit_code": res.exit_code
-        }
+        try:
+            res = self.sandbox.commands.run(cmd, cwd=target_dir)
+            return {
+                "stdout": res.stdout,
+                "stderr": res.stderr,
+                "exit_code": res.exit_code
+            }
+        except Exception as e:
+            # Catch CommandExitException which is raised when commands exit with non-zero codes
+            if hasattr(e, "result") and e.result is not None:
+                return {
+                    "stdout": getattr(e.result, "stdout", ""),
+                    "stderr": getattr(e.result, "stderr", ""),
+                    "exit_code": getattr(e.result, "exit_code", 1)
+                }
+            elif hasattr(e, "exit_code"):
+                return {
+                    "stdout": getattr(e, "stdout", ""),
+                    "stderr": getattr(e, "stderr", ""),
+                    "exit_code": e.exit_code
+                }
+            else:
+                return {
+                    "stdout": "",
+                    "stderr": str(e),
+                    "exit_code": 127
+                }
 
     def close(self):
         """Closes the sandbox."""
