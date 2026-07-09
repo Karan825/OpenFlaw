@@ -32,8 +32,8 @@ jobs:
           LLM_MODEL: "gemini-1.5-flash"
           
           # GitHub App Credentials (for git push and PR actions)
-          GITHUB_APP_ID: ${{ secrets.GITHUB_APP_ID }}
-          GITHUB_INSTALLATION_ID: ${{ secrets.GITHUB_INSTALLATION_ID }}
-          GITHUB_APP_PRIVATE_KEY: ${{ secrets.GITHUB_APP_PRIVATE_KEY }}
+          GITHUB_APP_ID: ${{ secrets.APP_ID }}
+          GITHUB_INSTALLATION_ID: ${{ secrets.INSTALLATION_ID }}
+          GITHUB_APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
         run: |
           python worker/src/main.py
