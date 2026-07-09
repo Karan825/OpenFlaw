@@ -19,7 +19,7 @@ class SandboxManager:
         logger.info(f"Starting E2B sandbox with template: {template}")
         if self.api_key:
             os.environ["E2B_API_KEY"] = self.api_key
-        self.sandbox = Sandbox()
+        self.sandbox = Sandbox.create(template=template)
         return self.sandbox
 
     def clone_repo(self, clone_url: str, token: str = None) -> str:
