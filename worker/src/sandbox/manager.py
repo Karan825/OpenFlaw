@@ -78,7 +78,7 @@ class SandboxManager:
             
         target_dir = workdir or self.repo_dir
         logger.info(f"Executing command in {target_dir}: {cmd}")
-        res = self.sandbox.commands.run(cmd, workdir=target_dir)
+        res = self.sandbox.commands.run(cmd, cwd=target_dir)
         return {
             "stdout": res.stdout,
             "stderr": res.stderr,
@@ -89,5 +89,5 @@ class SandboxManager:
         """Closes the sandbox."""
         if self.sandbox:
             logger.info("Closing E2B sandbox")
-            self.sandbox.close()
+            self.sandbox.kill()
             self.sandbox = None
