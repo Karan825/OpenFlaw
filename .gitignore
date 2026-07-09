@@ -1,0 +1,19 @@
+# Local environment variables
+.env
+
+# Python caching & bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+coverage_report.json
+
+# Local evaluation logs
+eval/eval_results.json
+
+# OS files
+.DS_Store
+Thumbs.db

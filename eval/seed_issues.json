@@ -1,0 +1,14 @@
+[
+  {
+    "id": "test-issue-01",
+    "title": "Fix: Math division crash on zero divisor",
+    "body": "The division calculator function in src/utils/math.py crashes with ZeroDivisionError when denominator is 0. Handle this gracefully by returning 0.",
+    "repo_url": "https://github.com/mock/repo-math-test"
+  },
+  {
+    "id": "test-issue-02",
+    "title": "Feature: Filter logs containing sensitive tokens",
+    "body": "Add a cleaning filter function in scrubber utility to strip API keys like sk- or ghp_ from output logs to avoid leaks.",
+    "repo_url": "https://github.com/mock/repo-scrub-test"
+  }
+]

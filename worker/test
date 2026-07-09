@@ -1,0 +1,12 @@
+# ast_play.py
+import ast
+
+code = """
+class Person:
+    def hello(self):
+        print("Hi")
+"""
+
+tree = ast.parse(code)
+
+print(ast.dump(tree, indent=4))

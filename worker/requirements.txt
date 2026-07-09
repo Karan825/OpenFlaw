@@ -1,0 +1,7 @@
+PyGithub
+e2b
+anthropic
+openai
+tree-sitter
+PyJWT
+cryptography
