@@ -17,7 +17,9 @@ class SandboxManager:
     def start(self, template: str = "base") -> Sandbox:
         """Starts a new E2B Sandbox."""
         logger.info(f"Starting E2B sandbox with template: {template}")
-        self.sandbox = Sandbox(api_key=self.api_key)
+        if self.api_key:
+            os.environ["E2B_API_KEY"] = self.api_key
+        self.sandbox = Sandbox()
         return self.sandbox
 
     def clone_repo(self, clone_url: str, token: str = None) -> str:
