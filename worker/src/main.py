@@ -208,6 +208,7 @@ if __name__ == "__main__":
             payload_data = json.loads(payload_str)
             run_worker(payload_data)
         except Exception as err:
-            print(f"Error executing worker main: {err}")
+            logger.error(f"Error executing worker main: {err}")
+            raise err
     else:
         logger.error("No PAYLOAD environment variable provided.")
