@@ -171,6 +171,10 @@ class AgentRunner:
             
             # Step 1: Call LLM
             try:
+                # Rate limit guard: Sleep for 12 seconds if using Gemini to prevent 429 quota limits
+                if turns > 1 and self.provider == "gemini":
+                    logger.info("Rate limit guard: Sleeping for 12 seconds between turns...")
+                    time.sleep(12)
                 llm_response = self._call_llm(messages)
             except Exception as e:
                 logger.error(f"LLM API call failed: {e}")
