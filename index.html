@@ -49,55 +49,51 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container hero-content">
-      <div class="terminal-badge">
-        <span class="badge-prefix">$</span>
-        <span>git clone github.com/Karan825/OpenFlaw</span>
-      </div>
-
       <h1 class="hero-title">
         Autonomous GitHub<br>
         <span class="text-contrast">Issue-to-PR</span> Agent
       </h1>
 
       <p class="hero-subtitle">
-        A self-hosted software engineering agent. Securely ingests GitHub issue webhooks, spins up isolated E2B microVMs, executes an autonomous ReAct reasoning loop with Gemini 2.5 Flash, tests changes inside sandboxes, and ships verified PRs.
+        A self-hosted engineering agent that resolves GitHub issues in isolated E2B microVMs. Runs an autonomous ReAct reasoning loop with Gemini 2.5 Flash, tests code in real time, and ships verified Pull Requests.
       </p>
 
       <div class="hero-cta-group">
-        <a href="#quickstart" class="btn btn-primary">
+        <a href="#quickstart" class="btn btn-primary btn-lg">
           <span>Deploy Worker</span>
           <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
-        <a href="#simulator" class="btn btn-secondary">
+        <a href="#simulator" class="btn btn-secondary btn-lg">
           <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
             <polygon points="5 3 19 12 5 21 5 3"/>
           </svg>
-          <span>Test Interactive Simulation</span>
+          <span>Live Interactive Sandbox</span>
         </a>
       </div>
 
       <!-- Hero Metrics Bar -->
       <div class="hero-metrics">
-        <div class="metric-item">
+        <div class="metric-card">
           <span class="metric-value">100%</span>
-          <span class="metric-label">Sandboxed Isolation</span>
+          <span class="metric-label">MicroVM Sandboxed</span>
+          <span class="metric-subtext">Isolated Firecracker VM</span>
         </div>
-        <div class="metric-divider"></div>
-        <div class="metric-item">
-          <span class="metric-value">0 Cloud Cost</span>
-          <span class="metric-label">Free-Tier Compatible</span>
+        <div class="metric-card">
+          <span class="metric-value">$0.00</span>
+          <span class="metric-label">Monthly Cloud Cost</span>
+          <span class="metric-subtext">100% Free-Tier Architecture</span>
         </div>
-        <div class="metric-divider"></div>
-        <div class="metric-item">
+        <div class="metric-card">
           <span class="metric-value">ReAct</span>
-          <span class="metric-label">AST + Ripgrep + Diff Loop</span>
+          <span class="metric-label">Reasoning Engine</span>
+          <span class="metric-subtext">AST + Ripgrep + Diff Guard</span>
         </div>
-        <div class="metric-divider"></div>
-        <div class="metric-item">
+        <div class="metric-card">
           <span class="metric-value">Pytest</span>
-          <span class="metric-label">Automated Pre-PR Test Gate</span>
+          <span class="metric-label">Pre-PR Verification</span>
+          <span class="metric-subtext">Automated Regression Gate</span>
         </div>
       </div>
     </div>
