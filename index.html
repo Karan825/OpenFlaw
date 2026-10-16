@@ -27,7 +27,7 @@
         <span class="version-tag">v1.0.0</span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="#how-it-works">Architecture</a>
         <a href="#simulator">Live Simulator</a>
         <a href="#tools">Core Engine</a>
@@ -46,6 +46,7 @@
     </div>
   </header>
 
+  <main>
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container hero-content">
@@ -317,32 +318,38 @@
     <div class="container">
       <div class="section-header">
         <div class="section-tag">PERFORMANCE SPECS</div>
-        <h2 class="section-title">Benchmark & Free-Tier Optimization</h2>
+        <h2 class="section-title">Benchmark Outcomes</h2>
         <p class="section-description">
-          OpenFlaw was specifically constructed to run on 100% free-tier cloud primitives with zero monthly fixed costs.
+          Measured on a focused SWE-bench Lite subset with automated verification gates in the execution loop.
         </p>
       </div>
 
-      <div class="specs-grid">
-        <div class="spec-card">
-          <div class="spec-label">SANDBOX BOOT TIME</div>
-          <div class="spec-val">&lt; 850 ms</div>
-          <div class="spec-sub">E2B Firecracker microVM initial spin-up</div>
+      <div class="benchmark-panel">
+        <div class="benchmark-claims" role="list" aria-label="OpenFlaw benchmark claims">
+          <p class="benchmark-claim" role="listitem">
+            Evaluated on a 50-issue SWE-bench Lite subset, resolving 28% of issues end-to-end with automated test validation
+          </p>
+          <p class="benchmark-claim" role="listitem">
+            Successfully generating PRs for 56% of issues.
+          </p>
         </div>
-        <div class="spec-card">
-          <div class="spec-label">AVG ISSUE RESOLUTION</div>
-          <div class="spec-val">42.3 s</div>
-          <div class="spec-sub">From webhook trigger to passing PR</div>
-        </div>
-        <div class="spec-card">
-          <div class="spec-label">TEST VERIFICATION ACCURACY</div>
-          <div class="spec-val">100%</div>
-          <div class="spec-sub">Zero unvalidated PRs merged</div>
-        </div>
-        <div class="spec-card">
-          <div class="spec-label">CLOUD INFRA COST</div>
-          <div class="spec-val">$0.00 / mo</div>
-          <div class="spec-sub">GitHub Actions + E2B Free + Gemini Tier</div>
+
+        <div class="benchmark-metrics" aria-label="Benchmark highlights">
+          <article class="benchmark-card">
+            <div class="benchmark-label">Evaluation Set</div>
+            <div class="benchmark-value">50 issues</div>
+            <p class="benchmark-sub">SWE-bench Lite subset evaluated</p>
+          </article>
+          <article class="benchmark-card">
+            <div class="benchmark-label">Resolved End-to-End</div>
+            <div class="benchmark-value">28%</div>
+            <p class="benchmark-sub">With automated test validation</p>
+          </article>
+          <article class="benchmark-card">
+            <div class="benchmark-label">PR Generation Success</div>
+            <div class="benchmark-value">56%</div>
+            <p class="benchmark-sub">Issues with successfully generated PRs</p>
+          </article>
         </div>
       </div>
     </div>
@@ -447,6 +454,7 @@ jobs:
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">

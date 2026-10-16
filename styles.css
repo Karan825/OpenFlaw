@@ -30,6 +30,8 @@
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
+  --ring-focus: 0 0 0 2px rgba(255, 255, 255, 0.7), 0 0 0 5px rgba(255, 255, 255, 0.14);
+  --shadow-panel: 0 12px 38px rgba(0, 0, 0, 0.42);
 
   --container-width: 1200px;
 }
@@ -56,6 +58,7 @@ body {
   position: relative;
   overflow-x: hidden;
   background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 /* Background Subtle Grid */
@@ -87,6 +90,12 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--ring-focus);
+}
+
 code, pre {
   font-family: var(--font-mono);
 }
@@ -107,6 +116,7 @@ code, pre {
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   text-transform: uppercase;
   letter-spacing: 0.6px;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -135,6 +145,12 @@ code, pre {
   transform: translateY(-2px);
 }
 
+.btn:disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .btn-lg {
   padding: 14px 28px;
   font-size: 13px;
@@ -153,7 +169,7 @@ code, pre {
   background-color: rgba(5, 5, 5, 0.88);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
-  height: 68px;
+  height: 72px;
   display: flex;
   align-items: center;
 }
@@ -168,7 +184,7 @@ code, pre {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   font-weight: 700;
   font-size: 16px;
   letter-spacing: -0.3px;
@@ -203,18 +219,21 @@ code, pre {
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 26px;
 }
 
 .nav-links a {
   font-size: 13px;
   color: var(--text-secondary);
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
   font-weight: 400;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
 }
 
 .nav-links a:hover {
   color: var(--accent-white);
+  border-color: var(--border-highlight);
 }
 
 .header-actions {
@@ -231,7 +250,7 @@ code, pre {
    HERO SECTION (Expansive, Balanced, Symmetrical)
    ========================================================================= */
 .hero-section {
-  padding: 100px 0 85px;
+  padding: 96px 0 88px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -261,10 +280,10 @@ code, pre {
 }
 
 .hero-subtitle {
-  font-size: 18.5px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.72;
   color: var(--text-secondary);
-  max-width: 740px;
+  max-width: 780px;
   margin-bottom: 44px;
   font-weight: 400;
 }
@@ -296,6 +315,7 @@ code, pre {
   align-items: center;
   text-align: center;
   transition: all 0.2s ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
 }
 
 .metric-card:hover {
@@ -332,7 +352,7 @@ code, pre {
    SECTIONS GENERAL
    ========================================================================= */
 .section {
-  padding: 100px 0;
+  padding: 92px 0;
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -357,7 +377,7 @@ code, pre {
 }
 
 .section-title {
-  font-size: 36px;
+  font-size: clamp(30px, 4vw, 38px);
   font-weight: 800;
   letter-spacing: -1px;
   margin-bottom: 14px;
@@ -366,7 +386,7 @@ code, pre {
 
 .section-description {
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text-secondary);
 }
 
@@ -378,7 +398,7 @@ code, pre {
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow-panel);
 }
 
 .simulator-controls {
@@ -431,6 +451,11 @@ code, pre {
   border-color: var(--accent-white);
   color: var(--accent-white);
   font-weight: 600;
+}
+
+.scenario-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ring-focus);
 }
 
 .action-buttons {
@@ -611,6 +636,7 @@ code, pre {
   display: flex;
   flex-direction: column;
   transition: border-color 0.2s, transform 0.2s;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
 }
 
 .arch-card:hover {
@@ -688,6 +714,7 @@ code, pre {
   border-radius: var(--radius-md);
   background-color: var(--bg-card);
   overflow: hidden;
+  box-shadow: var(--shadow-panel);
 }
 
 .tools-sidebar {
@@ -791,53 +818,79 @@ code, pre {
 }
 
 /* =========================================================================
-   SPECS GRID
+   BENCHMARK SECTION
    ========================================================================= */
-.specs-grid {
+.benchmark-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.005));
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-panel);
+}
+
+.benchmark-claims {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  padding: 22px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.benchmark-claim {
+  color: var(--text-primary);
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+.benchmark-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.spec-card {
+.benchmark-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
-  padding: 32px 20px;
+  padding: 28px 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   transition: transform 0.2s, border-color 0.2s;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
 }
 
-.spec-card:hover {
+.benchmark-card:hover {
   transform: translateY(-2px);
   border-color: var(--border-highlight);
 }
 
-.spec-label {
+.benchmark-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.8px;
   font-weight: 600;
   color: var(--text-tertiary);
   letter-spacing: 0.8px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
-.spec-val {
+.benchmark-value {
   font-family: var(--font-mono);
-  font-size: 36px;
+  font-size: clamp(28px, 4vw, 40px);
   font-weight: 800;
   color: var(--accent-white);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: -1px;
 }
 
-.spec-sub {
+.benchmark-sub {
   font-size: 12.5px;
   color: var(--text-secondary);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 /* =========================================================================
@@ -848,6 +901,7 @@ code, pre {
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   overflow: hidden;
+  box-shadow: var(--shadow-panel);
 }
 
 .quickstart-tabs {
@@ -927,6 +981,11 @@ code, pre {
   border-color: var(--accent-white);
 }
 
+.copy-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ring-focus);
+}
+
 pre {
   background-color: #040404;
   border: 1px solid var(--border-subtle);
@@ -942,7 +1001,7 @@ pre {
    FOOTER
    ========================================================================= */
 .site-footer {
-  padding: 80px 0 40px;
+  padding: 74px 0 36px;
   background-color: #030303;
   border-top: 1px solid var(--border-subtle);
 }
@@ -1031,7 +1090,7 @@ pre {
   .arch-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .specs-grid {
+  .benchmark-metrics {
     grid-template-columns: repeat(2, 1fr);
   }
   .hero-metrics {
@@ -1071,8 +1130,14 @@ pre {
   .hero-metrics {
     grid-template-columns: 1fr;
   }
-  .specs-grid {
+  .benchmark-metrics {
     grid-template-columns: 1fr;
+  }
+  .benchmark-panel {
+    padding: 20px;
+  }
+  .benchmark-claims {
+    padding: 18px;
   }
   .hero-cta-group {
     flex-direction: column;
